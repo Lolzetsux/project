@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>CRMEF-SM</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Gestion des salles">
+    <meta name="author" content="Enseignant de CRMEF-SM">
+    <meta name="year" content="2021">
+    <!-- Font Awesome 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- Full -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.7.0/main.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.7.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.7.0/main.min.js"></script>
+    
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+          header: { // Display nothing at the top
+            left: '',
+            center: '',
+            right: ''
+        },
+        locale: 'fr',
+        timezone : 'UTC',
+        resources: [
+        { id: 'a',  title: 'Math' },
+        { id: 'b',  title: 'phy' },
+        { id: 'c',  title: 'info' },
+        { id: 'd',  title: 'geo' },
+        { id: 'e',  title: 'beo' },
+        { id: 'e1',  title: 'fr' }
+        ],
+        events: [
+        { id: '1', resourceId: 'e', start: '2021-05-19 08:00', end: '2021-05-19 10:00', title: 'event 1' },
+        { id: '6', resourceId: 'e', start: '2021-05-18 10:00', end: '2021-05-18 12:00', title: 'event a' },
+        { id: '2', resourceId: 'e', start: '2021-05-18 14:00', end: '2021-05-18 16:00', title: 'event 2' },
+        { id: '3', resourceId: 'e', start: '2021-05-18 16:01', end: '2021-05-18 18:00', title: 'event 3' },
+        { id: '4', resourceId: 'e', start: '2021-05-19 15:00', end: '2021-05-19 18:00', title: 'event 4' },
+        { id: '5', resourceId: 'e', start: '2021-05-20 14:00', end: '2021-05-20 18:00', title: 'event 5' }
+        ],
+        height: 'auto', // Fix height
+        contentHeight: 600,
+        columnFormat: 'dddd', // Display just full length of weekday, without dates 
+        initialView: 'timeGridWeek', // display week view
+        hiddenDays: [0], // hide Sunday
+        weekNumbers:  true, // don't show week numbers
+        slotMinTime: '7:30:00', // display from 16 to
+        slotMaxTime: '19:00:00', // 23 
+        slotDuration: '00:30:00', // 15 minutes for each row
+        allDaySlot: false, // don't show "all day" at the top
+        select: function(start, end, allDay) {
+             // Code for creating new events.
+             alert("Create new event at " + start);
+        },
+        eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) {
+             // Code when you resize an event (for example make it two hours longer
+             alert("I just got resized!");
+        },
+        eventDrop: function( event, jsEvent, ui, view ) { 
+            // Code when you drop an element somewhere else
+            alert("I'm somewhere else now");
+        }
+        });
+        calendar.render();
+      });
+    </script>
+  </head>
+  <body style="background-color: #f5f5f5;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <a class="navbar-brand" style="font-weight: 800 ;font-size: 24px;" href="#"><i class="fa fa-calendar" aria-hidden="true"></i> CRMEF</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="datatable.html">Salles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="datatable.html">Activity</a>
+          </li>
+        </ul>        
+      </div>
+      <form class="form-inline my-2 my-lg-0 nav-hide-login">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">disconnect</button>
+      </form>
+    </nav>
+    <!-- Page Content -->
+    <div id='calendar' class="m-4"></div>
+    <!-- Footer -->
+    <footer class="py-2 bg-dark">
+        <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;CRMEF 2020-2021
+            <br/>
+            <a class="navbar-brand hvr-bob" target="_blank" href="">Contact us</a>
+        </p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+        
+    
+  </body>
+</html>
